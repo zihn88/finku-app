@@ -2,9 +2,11 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Menambahkan status bar style untuk iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#1E50D6">
     <title>FinKu</title>
 
@@ -12,7 +14,6 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6418/6418336.png">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/6418/6418336.png">
 
-    
     <!-- MANIFEST DINAMIS -->
     <script>
         const manifest = {
@@ -30,12 +31,34 @@
     </script>
 
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #E2E8F0; }
-        iframe { border: none; width: 100%; height: 100vh; display: block; }
+        /* Menggunakan 100dvh agar menyesuaikan dinamis dengan address bar HP */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100dvh; 
+            overflow: hidden; 
+            background-color: #E2E8F0; 
+        }
+        
+        /* Fallback jika browser jadul belum mendukung dvh */
+        @supports not (height: 100dvh) {
+            body, html {
+                height: 100vh;
+            }
+        }
+
+        /* Iframe dibuat 100% mengikuti body yang sudah aman dari address bar */
+        iframe { 
+            border: none; 
+            width: 100%; 
+            height: 100%; 
+            display: block; 
+        }
     </style>
 </head>
 <body>
-    <!-- GANTI URL DI BAWAH INI DENGAN LINK /EXEC ANDA -->
+    <!-- URL Web App GAS Anda -->
     <iframe src="https://script.google.com/macros/s/AKfycbyaHkmXcWjuupg-0SPkt9YbfigQzgTbi5HEV0Ey4ndPIUV9w63Xkv-JCkg06iw-CVJH/exec"></iframe>
 </body>
 </html>
